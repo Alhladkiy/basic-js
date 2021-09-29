@@ -12,32 +12,25 @@
  */
 export default function encodeLine(str) {
   const obj = {};
-  let result = "";
+  let result = '';
 
   for (let i = 0; i < str.length; i++) {
     const letter = str[i];
+
     if (obj[letter] !== undefined) {
       obj[letter] += 1;
     } else { 
       obj[letter] = 1;
     } 
   }
+
   for (const key in obj) { 
     if (obj[key] > 1) {
       result += obj[key] + key; 
     } else {
-      result += key 
+      result += key;
     }
-
-  
   }
-  return result
 
-  // throw new NotImplementedError('Not implemented');
-  // remove line with error and write your code here
+  return result;
 }
-
-
-encodeLine('aabbbc')
-
-// 2a3bc

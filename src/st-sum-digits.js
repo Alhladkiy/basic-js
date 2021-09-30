@@ -1,5 +1,3 @@
-import { NotImplementedError } from '../extensions/index.js';
-
 /**
  * Given a number, replace this number with
  * the sum of its digits until we get to a one digit number.
@@ -13,15 +11,19 @@ import { NotImplementedError } from '../extensions/index.js';
  *
  */
 export default function getSumOfDigits(n) {
-  let result = ""
-  for (let i = 0; i < n.length; i++) {
-    if (n[i] + n[i + 1] < 10 ) {
-        result += n(i)
-    } else {
+  const str = String(n); 
+  let result = 0;
 
-    }
+  for (let i = 0; i < str.length; i++) {
+    const number = Number(str[i]);
+
+    result = result + number;
   }
-  return result
-  throw new NotImplementedError('Not implemented');
-  // remove line with error and write your code here
+
+  if (result < 10) {
+    return result;
+  } else {
+    return getSumOfDigits(result);
+  }
 }
+

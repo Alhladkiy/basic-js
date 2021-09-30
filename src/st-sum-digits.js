@@ -11,19 +11,26 @@
  *
  */
 export default function getSumOfDigits(n) {
-  const str = String(n); 
-  let result = 0;
+  let result = n;
+  
+  while (result >= 10) {
+    let sum = 0;
+    const str = String(result);
 
-  for (let i = 0; i < str.length; i++) {
-    const number = Number(str[i]);
+    for (let i = 0; i < str.length; i++) {
+      sum = sum + Number(str[i]);
+    }
 
-    result = result + number;
+    result = sum;
   }
 
-  if (result < 10) {
-    return result;
-  } else {
-    return getSumOfDigits(result);
-  }
+return result;
+
+
+  // if (result < 10) {
+  //   return result;
+  // } else {
+  //   return getSumOfDigits(result);
+  // }
 }
 

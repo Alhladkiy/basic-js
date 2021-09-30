@@ -8,19 +8,23 @@ import { NotImplementedError } from '../extensions/index.js';
  * @return {Number}
  *
  * @example
- * For n = 152, the output should be 52
+ * For n = 215, the output should be 52
  *
  */
 export default function deleteDigit(n) {
+  const str = String(n);
+  let min = Number(str[0]);
 
+  for (let i = 1; i < str.length; i++) {
+    const num = Number(str[i]);
+    if (min > num) {
+      min = num;
+    }
+  }
 
+  const index = str.indexOf(String(min));
+  const result = str.slice(0, index) + str.slice(index + 1);
 
-  throw new NotImplementedError('Not implemented');
-  // remove line with error and write your code here
-}
+  return Number(result)
+} 
 
-
-// let number = 152;
-// newNumber = String(number);
-// result = newNumber.slice(1, 3)
-// console.log(+result)

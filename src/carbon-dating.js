@@ -19,18 +19,16 @@ const HALF_LIFE_PERIOD = 5730;
  */
 export default function dateSample(sampleActivity) {
   if (typeof sampleActivity !== 'string' || sampleActivity.trim().length === 0  || isNaN(Number(sampleActivity))) {
-    return false
+    return false;
   }
 
-  const k  = Math.log(Number(2)) / HALF_LIFE_PERIOD;
-  
-  var a = (Math.log(MODERN_ACTIVITY / sampleActivity)) / k
-  // remove line with error and write your code here
-  const result = Math.ceil(a);
+  const k  = Math.log(2) / HALF_LIFE_PERIOD;
+  const term = (Math.log(MODERN_ACTIVITY / sampleActivity)) / k
+  const result = Math.ceil(term);
   
   if ((isNaN(result) || result < 0 || !Number.isFinite(result))) {
     return false;
   }
+
   return result;
 }
-console.log(dateSample('-55.8'))
